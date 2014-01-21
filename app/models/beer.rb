@@ -3,7 +3,14 @@ class Beer < ActiveRecord::Base
 	has_many :ratings
 
 	def average_rating
+		#the good
+		#ratings.average :score
+		
+		#the bad
 		#(ratings.sum :score) / ratings.count
-		ratings.average :score
+	
+		#the ugly
+		summa = ratings.inject (0) { |result, element| result + element.score }
+		summa / ratings.count.to_f
 	end
 end
