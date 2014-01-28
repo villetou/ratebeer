@@ -1,4 +1,9 @@
 Ratebeer::Application.routes.draw do
+  resources :users
+  get 'signup', to: 'users#new'
+
+  get 'sessions/new', to: 'sessions#new'
+
   resources :beers
   resources :breweries
 

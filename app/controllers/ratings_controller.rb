@@ -9,8 +9,11 @@ class RatingsController < ApplicationController
 	end	
 
 	def create
-		Rating.create params.require(:rating).permit(:score, :beer_id)
+		rating = Rating.create params.require(:rating).permit(:score, :beer_id)
 		
+		# talletetaan annettu arvostelu sessioon
+		session[:last_rating] = "#{rating.beer.name} #{rating.score} points"
+
 		#redirect_to 'http://www.cs.helsinki.fi/'
 		redirect_to ratings_path
 		#byebug
