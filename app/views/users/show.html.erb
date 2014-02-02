@@ -5,5 +5,33 @@
   <%= @user.username %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<p>
+<% if @user.ratings.empty? %>
+	No ratings given
+<% else %>
+	<%= "Has "+pluralize(@user.ratings.count, 'rating','ratings')+". The average ratings is #{@user.average_rating}" %>
+<% end %>
+</p>
+
+<p>Member of 
+<% @user.beer_clubs.each do |beerclub| %>
+	<%= link_to beerclub.name, beerclub %> 
+<% end %>
+</p>
+
+<h2>Ratings</h2>
+
+<ul>
+<% @user.ratings.each do |rating| %>
+	<li><%= "#{rating.beer.name}, #{rating.score}, "%>
+		<% if @user == current_user %>
+			<%= link_to 'delete', rating, method: :delete, data: { confirm: 'Are you sure?' } %>
+		<% end %>
+	</li>
+<% end %>
+</ul>
+
+<% if @user == current_user %>
+<%= link_to 'Edit', edit_user_path(@user) %> | <%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<% end %>

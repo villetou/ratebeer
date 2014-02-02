@@ -9,20 +9,27 @@ class RatingsController < ApplicationController
 	end	
 
 	def create
-		rating = Rating.create params.require(:rating).permit(:score, :beer_id)
-		
-		# talletetaan annettu arvostelu sessioon
-		session[:last_rating] = "#{rating.beer.name} #{rating.score} points"
+		@rating = Rating.create params.require(:rating).permit(:score, :beer_id)
 
+		if @rating.save
+			current_user.ratings << @rating
+			redirect_to user_path current_user
+		else
+			@beers = Beer.all
+			render :new
+		end
+
+		# talletetaan annettu arvostelu sessioon
+		#session[:last_rating] = "#{rating.beer.name} #{rating.score} points"
 		#redirect_to 'http://www.cs.helsinki.fi/'
-		redirect_to ratings_path
+		#redirect_to current_user
 		#byebug
 		#raise 
 	end
 
 	def destroy
 		rating = Rating.find params[:id]
-		rating.delete
-		redirect_to ratings_path
+		rating.delete if current_user == rating.user
+		redirect_to :back
 	end
 end
