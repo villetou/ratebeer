@@ -1,2 +1,4 @@
 == README
 http://breweries.herokuapp.com/breweries
+
+[![Build Status](https://travis-ci.org/villetou/ratebeer-public.png)](https://travis-ci.org/villetou/ratebeer-public)
