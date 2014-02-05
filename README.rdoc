@@ -2,3 +2,5 @@
 http://breweries.herokuapp.com/breweries
 
 {<img src="https://travis-ci.org/villetou/ratebeer.png?branch=master" alt="Build Status" />}[https://travis-ci.org/villetou/ratebeer]
+
+{<img src="https://codeclimate.com/github/villetou/ratebeer.png" />}[https://codeclimate.com/github/villetou/ratebeer]
