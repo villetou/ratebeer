@@ -1,10 +1,19 @@
 language: ruby
-
 rvm:
- - 2.0.0
-
+- 2.0.0
 script:
- - bundle exec rake db:migrate --trace
- - RAILS_ENV=test bundle exec rake db:migrate --trace
- - bundle exec rake db:test:prepare
- - bundle exec rspec -fd spec/
+- bundle exec rake db:migrate --trace
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
+- bundle exec rspec -fd spec/
+deploy:
+  provider: heroku
+  api_key:
+    secure: lte0+CREw+ACvyUAF1/JWeevPkLSvlY1r961wXO+fb8TOQ9D9UA830ZB+WtAnEo6atAKr6niXiuSuDqp4TnaRPlA3l245pcYmnFWj7c3jjqGJCOZ5P/+M+GeslYLgYZrYeeuYflDIkP63zz5IJFdEEDM4WzLUlLziG83EiSDpKY=
+  app: breweries
+  run: 
+  	- "rake db:migrate"
+  	- restart
+  	- "rake cleanup"
+  on:
+    repo: villetou/ratebeer
