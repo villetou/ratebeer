@@ -1,0 +1,14 @@
+require 'spec_helper'
+
+Beer
+BeersController
+User
+UsersController
+Membership
+MembershipsController
+BeerClub
+BeerClubsController
+Rating
+RatingsController
+SessionsController
+RatingAverage
