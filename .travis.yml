@@ -11,7 +11,6 @@ deploy:
   api_key:
     secure: lte0+CREw+ACvyUAF1/JWeevPkLSvlY1r961wXO+fb8TOQ9D9UA830ZB+WtAnEo6atAKr6niXiuSuDqp4TnaRPlA3l245pcYmnFWj7c3jjqGJCOZ5P/+M+GeslYLgYZrYeeuYflDIkP63zz5IJFdEEDM4WzLUlLziG83EiSDpKY=
   app: breweries
-  run: 
-    - "rake db:migrate"
+  run: "rake db:migrate"
   on:
     repo: villetou/ratebeer
