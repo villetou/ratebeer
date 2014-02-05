@@ -13,7 +13,5 @@ deploy:
   app: breweries
   run: 
     - "rake db:migrate"
-    - restart
-    - "rake cleanup"
   on:
     repo: villetou/ratebeer
