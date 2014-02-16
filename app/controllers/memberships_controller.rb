@@ -14,7 +14,8 @@ class MembershipsController < ApplicationController
 
 		if @membership.save
 			current_user.memberships << @membership
-			redirect_to user_path current_user
+			flash[:notice] = "#{current_user.username}, welcome to the club!"
+			redirect_to beer_club_path @membership.beer_club
 		else
 			render :new
 		end

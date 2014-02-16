@@ -11,6 +11,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'webmock'
 	gem 'factory_girl_rails'
 	gem 'capybara'
   	gem 'launchy'
@@ -27,6 +28,12 @@ group :production do
    gem 'pg'
    gem 'rails_12factor'
 end
+
+# HTTP requests with HTTParty
+gem 'httparty'
+
+# Save configs into cache
+gem "rails-settings-cached", "0.3.1"
 
 # Add crypting for passwords
 gem 'bcrypt-ruby', '~> 3.1.2'
